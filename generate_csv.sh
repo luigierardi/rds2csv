@@ -6,7 +6,7 @@
 LOCAL_PATH=$(dirname $0)
 LIB_PATH="${LOCAL_PATH}/lib"
 
-PYTHON="/usr/bin/python3.6"
+. ${LOCAL_PATH}/etc/conf_file.cnf
 
 function usage()
 {

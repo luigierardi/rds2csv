@@ -6,7 +6,7 @@
 LOCAL_PATH=$(dirname $0)
 LIB_PATH="${LOCAL_PATH}/lib"
 
-RSCRIPT="Rscript"
+. ${LOCAL_PATH}/etc/conf_file.cnf
 
 INFO='\033[0;34m'
 WARNING='\033[0;33m'
@@ -34,7 +34,7 @@ then
 	exit 2
 fi
 
-for FILE_NAME in $(find $1 -name \*.rds)
+for FILE_NAME in $($FIND $1 -name \*.rds)
 do
 	echo -e "${INFO}INFO:$(basename $0 ):converting RDS file ${FILE_NAME}${NC}\c"
 	OUTPUT=$($RSCRIPT ${LIB_PATH}/read.r ${FILE_NAME})
