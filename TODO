@@ -1,0 +1,16 @@
+#
+
+rimuovere countries/ccontinent.rds
+rimuovere countries/covid.rds
+rimuovere countries/leagues.rds
+rimuovere leagues/country.rds
+rimuovere leagues/season.rds
+rimuovere leagues/seasons.rds
+controllare players
+
+
+
+
+/opt/rds/script/prod/convert_from_rds.sh /opt/rds/Andrea/Source_2/
+/opt/rds/script/prod/merge_json.sh /opt/rds/script/prod/conf_file.cnf /opt/rds/Andrea/Source_2/
+/opt/rds/script/prod/generate_csv.sh /opt/rds/script/prod/conf_file.cnf /opt/rds/Andrea/Source_2/

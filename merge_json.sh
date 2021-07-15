@@ -11,7 +11,7 @@ LIB_PATH="${LOCAL_PATH}/lib"
 function usage()
 {
 	echo "Usage:"
-	echo "$(basename $0) CONF_FILE SOURCE_DIR"
+	echo "$(basename $0) REPO_CONF_FILE SOURCE_DIR"
 	exit 1
 }
 
@@ -46,7 +46,7 @@ do
 	DIR=$(echo $STRING | cut -d ";" -f 1)
 	SOURCE_PATTERN=$(echo $STRING | cut -d ";" -f 2)
 	DEST_FILE=$(echo $STRING | cut -d ";" -f 3)
-	if [ $(echo "$STRING" | grep -c "#") -eq 0 -a "x$STRING" != "x" ]
+	if [ $(echo "$STRING" | $GREP -c "#") -eq 0 -a "x$STRING" != "x" ]
 	then
 		FILE_LIST=$(ls -1 ${SOURCE}/${DIR}/${SOURCE_PATTERN} 2> /dev/null)
 		DEST_DIR=$(echo "${DIR}"| sed 's/\/\*//') 

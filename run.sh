@@ -11,7 +11,7 @@ LIB_PATH="${LOCAL_PATH}/lib"
 function usage()
 {
 	echo "Usage:"
-	echo "$(basename $0) CONF_FILE SOURCE_DIR [ DEST_DIR ]"
+	echo "$(basename $0) REPO_CONF_FILE SOURCE_DIR [ DEST_DIR ]"
 	exit 1
 }
 
