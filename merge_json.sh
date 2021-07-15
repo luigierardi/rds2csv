@@ -53,7 +53,7 @@ do
 		if [ "x$FILE_LIST" != "x" ]
 		then
 			echo -e "${INFO}INFO:$(basename $0 ):processing ${SOURCE}/${DIR}/${SOURCE_PATTERN} to file ${SOURCE}/${DEST_DIR}/${DEST_FILE}${NC}\c" | tr -s "/"
-			OUTPUT=$(${PYTHON} ${LIB_PATH}/mergeJson.py -o ${SOURCE}/${DEST_DIR}/${DEST_FILE} -n data ${SOURCE}/${DIR}/${SOURCE_PATTERN})
+			OUTPUT=$(${PYTHON} ${LIB_PATH}/mergeJson.py -o ${SOURCE}/${DEST_DIR}/${DEST_FILE} -n data ${SOURCE}/${DIR}/${SOURCE_PATTERN} 2>&1)
 			if [ $? -eq 0 ]
 			then
 				echo -e "\t${GREEN}[ OK ]${NC}"

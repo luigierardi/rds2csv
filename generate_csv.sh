@@ -54,7 +54,7 @@ do
 		if [ -f ${SOURCE}/${DEST_DIR}/${SOURCE_FILE} ]
 		then
 			echo -e "${INFO}INFO:$(basename $0 ):processing ${SOURCE}/${DEST_DIR}/${SOURCE_FILE} to file ${SOURCE}/${DEST_DIR}/${DEST_FILE}${NC}\c" | tr -s "/"
-			OUTPUT=$(${PYTHON} ${LIB_PATH}/json2csv.py -o ${SOURCE}/${DEST_DIR}/${DEST_FILE}  -n data ${SOURCE}/${DEST_DIR}/${SOURCE_FILE})
+			OUTPUT=$(${PYTHON} ${LIB_PATH}/json2csv.py -o ${SOURCE}/${DEST_DIR}/${DEST_FILE}  -n data ${SOURCE}/${DEST_DIR}/${SOURCE_FILE} 2>&1)
 			if [ $? -eq 0 ]
 			then
 				echo -e "\t${GREEN}[ OK ]${NC}"

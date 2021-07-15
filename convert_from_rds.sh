@@ -37,7 +37,7 @@ fi
 for FILE_NAME in $($FIND $1 -name \*.rds)
 do
 	echo -e "${INFO}INFO:$(basename $0 ):converting RDS file ${FILE_NAME}${NC}\c"
-	OUTPUT=$($RSCRIPT ${LIB_PATH}/read.r ${FILE_NAME})
+	OUTPUT=$($RSCRIPT ${LIB_PATH}/read.r ${FILE_NAME} 2>&1)
 	if [ $? -eq 0 ]
 	then
 		echo -e "\t${GREEN}[ OK ]${NC}"
