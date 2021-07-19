@@ -71,12 +71,6 @@ else
 	fi
 fi
 
-INFO='\033[0;34m'
-WARNING='\033[0;33m'
-ERROR='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
-
 if [ ! -f "$CONF_FILE" ]
 then
 	echo "Conf file $CONF_FILE doesn't exists"

@@ -8,12 +8,6 @@ LIB_PATH="${LOCAL_PATH}/lib"
 
 . ${LOCAL_PATH}/etc/conf_file.cnf
 
-INFO='\033[0;34m'
-WARNING='\033[0;33m'
-ERROR='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
-
 function usage()
 {
 	echo "Usage:"
