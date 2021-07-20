@@ -11,7 +11,7 @@ LIB_PATH="${LOCAL_PATH}/lib"
 function usage()
 {
 	echo "Usage:"
-	echo "$(basename $0) REPO_CONF_FILE SOURCE_DIR"
+	echo "$(basename $0) REPO_CONF_FILE SOURCE_DIR [ SELECTOR ]"
 	exit 1
 }
 
@@ -22,6 +22,13 @@ fi
 
 CONF_FILE="$1"
 SOURCE="$2"
+
+if [ "x$3" = "x" ]
+then
+	SELECTOR=""
+else
+	SELECTOR="$3"
+fi
 
 if [ ! -f "$CONF_FILE" ]
 then
@@ -42,6 +49,14 @@ do
 	DEST_FILE=$(echo $STRING | cut -d ";" -f 3)
 	if [ $(echo "$STRING" | $GREP -c "#") -eq 0 -a "x$STRING" != "x" ]
 	then
+		if [ "x$SELECTOR" != "x" ]
+		then
+			if [ "$DIR" != "$SELECTOR" ]
+			then
+				echo -e "${INFO}INFO:$(basename $0 ):directory $DIR skipped${NC}"
+				continue
+			fi
+		fi
 		FILE_LIST=$(ls -1 ${SOURCE}/${DIR}/${SOURCE_PATTERN} 2> /dev/null)
 		DEST_DIR=$(echo "${DIR}"| sed 's/\/\*//') 
 		if [ "x$FILE_LIST" != "x" ]

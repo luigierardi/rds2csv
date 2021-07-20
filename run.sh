@@ -11,7 +11,7 @@ LIB_PATH="${LOCAL_PATH}/lib"
 function usage()
 {
 	echo "Usage:"
-	echo "$(basename $0) REPO_CONF_FILE SOURCE_DIR [ DEST_DIR ]"
+	echo "$(basename $0) REPO_CONF_FILE SOURCE_DIR DEST_DIR [ SELECTOR ]"
 	exit 1
 }
 
@@ -42,7 +42,8 @@ CONF_FILE="$1"
 SOURCE="$2"
 if [ "x$3" = "x" ]
 then
-	DEST_DIR=""
+	usage
+	#DEST_DIR=""
 else
 	DEST_DIR="$3"
 	if [ ! -d "$DEST_DIR" ]
@@ -71,6 +72,13 @@ else
 	fi
 fi
 
+
+if [ "x$4" = "x" ]
+then
+	SELECTOR=""
+else
+	SELECTOR="$4"
+fi
 if [ ! -f "$CONF_FILE" ]
 then
 	echo "Conf file $CONF_FILE doesn't exists"
@@ -117,21 +125,21 @@ echo "===================================================="
 echo "     Step 1/4 - Converting files from RDS format" 
 echo "====================================================" 
 echo
-${LOCAL_PATH}/convert_from_rds.sh $SOURCE $DEST_DIR 
+${LOCAL_PATH}/convert_from_rds.sh $SOURCE $DEST_DIR $SELECTOR
 
 echo
 echo "====================================================" 
 echo "           Step 2/4 - Merging json files" 
 echo "====================================================" 
 echo
-${LOCAL_PATH}/merge_json.sh $CONF_FILE $SOURCE 
+${LOCAL_PATH}/merge_json.sh $CONF_FILE $SOURCE $SELECTOR
 
 echo
 echo "===================================================="
 echo "         Step 3/4 - Generate CSV from json"
 echo "===================================================="
 echo
-${LOCAL_PATH}/generate_csv.sh $CONF_FILE $SOURCE 
+${LOCAL_PATH}/generate_csv.sh $CONF_FILE $SOURCE $SELECTOR
 
 echo
 echo "===================================================="
