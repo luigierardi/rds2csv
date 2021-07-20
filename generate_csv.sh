@@ -54,7 +54,7 @@ do
 		then
 			if [ "$DIR" != "$SELECTOR" ]
 			then
-				echo -e "${INFO}INFO:$(basename $0 ):directory $DIR skipped${NC}\c"
+				echo -e "${INFO}INFO:$(basename $0 ):directory $DIR skipped${NC}"
 				continue
 			fi
 		fi
